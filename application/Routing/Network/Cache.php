@@ -4,10 +4,8 @@ namespace Serenity\Routing\Network;
 
 use function
 {
-	header,
 	gmdate,
 	strtotime,
-	headers_sent
 };
 
 

@@ -59,7 +59,9 @@ class Configuration
 			{
 				apcu_store($key, $value, $lifetime);
 			}
-			else apcu_add($key, $value, $lifetime);
+			else {
+                apcu_add($key, $value, $lifetime);
+            }
 		}
 
 		if ($overwrite || !isset($this->data[$key]))
@@ -76,7 +78,9 @@ class Configuration
 			{
 				apcu_store($data, $lifetime);
 			}
-			else apcu_add($data, $lifetime);
+			else {
+                apcu_add($data, $lifetime);
+            }
 		}
 
 		foreach ($data as $key => $value)

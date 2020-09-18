@@ -16,9 +16,7 @@ class ServiceAPI extends Service
         return true;
     }
 
-    public function setActiveState(bool $state): void {
-
-    }
+    public function setActiveState(bool $state): void {}
 
     /**
      * @inheritDoc

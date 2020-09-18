@@ -2,6 +2,7 @@
 
 namespace Serenity\Clients;
 
+use Exception;
 use Serenity\App;
 use Serenity\Storage\Redis;
 
@@ -18,8 +19,7 @@ class Session
     /**
      * Session constructor.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $sessionConnection = App::config()->get('client.session');
         $this->storageAdapter = new Redis($sessionConnection);
         $this->sessionId = $this->initSession();
@@ -34,9 +34,8 @@ class Session
 
         if (empty($_COOKIE[$sessionKey]))
         {
-            $sessionId = hash('sha256', random_bytes(128));
             $sessionParams = session_get_cookie_params();
-
+            $sessionId = $this->generateSessionId();
             $lifetime = $sessionParams['lifetime'];
             $path = $sessionParams['path'];
             $domain = $sessionParams['domain'];
@@ -48,6 +47,19 @@ class Session
             return $sessionId;
         }
         return $_COOKIE[$sessionKey];
+    }
+
+    /**
+     * @return string
+     */
+    protected function generateSessionId(): string
+    {
+        try {
+            return hash('sha256', random_bytes(128));
+        }
+        catch (Exception $e) {
+            return $this->generateSessionId();
+        }
     }
 
 	/**

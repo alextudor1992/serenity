@@ -3,7 +3,6 @@
 namespace Serenity\Routing;
 
 use JsonException;
-use Serenity\App;
 use Serenity\Modules\Module;
 use function \
 {
@@ -162,7 +161,9 @@ class Router
                     {
                         $count = $pathDepth;
                     }
-                    else continue;
+                    else {
+                        continue;
+                    }
                 }
 
                 $mapping = [];

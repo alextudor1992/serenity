@@ -32,7 +32,9 @@ class Service extends Module
 		{
 			$this->serviceProvider->unregisterService($this->getModuleId());
 		}
-		else $this->serviceProvider->registerService($this->getModuleId());
+		else {
+            $this->serviceProvider->registerService($this->getModuleId());
+        }
 
 		parent::setActiveState($state);
 	}

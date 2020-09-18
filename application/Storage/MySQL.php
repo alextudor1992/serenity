@@ -45,7 +45,9 @@ class MySQL
             $this->connectionName = $connectionName;
             $this->credentials = $connectionsList[$connectionName];
         }
-        else throw new RuntimeException("Invalid MySQL configuration for connection {$connectionName}");
+        else {
+            throw new RuntimeException("Invalid MySQL configuration for connection {$connectionName}");
+        }
     }
 
     /**
@@ -181,7 +183,9 @@ class MySQL
             {
                 $this->statements[$query] = $statement;
             }
-            else throw new RuntimeException("Could not create prepared statement for query: $query");
+            else {
+                throw new RuntimeException("Could not create prepared statement for query: $query");
+            }
         }
         return $this->statements[$query];
     }

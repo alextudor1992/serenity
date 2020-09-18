@@ -6,7 +6,6 @@ use Redis as RedisAdapter;
 
 use RuntimeException;
 use Serenity\App;
-use function explode;
 
 /**
  * Class Redis
@@ -36,7 +35,9 @@ class Redis
             $this->credentials = $redisConnections[$connectionName];
             $this->connectionName = $connectionName;
         }
-        else throw new RuntimeException("Invalid configuration for Redis or connection '$connectionName' does not exist.");
+        else {
+            throw new RuntimeException("Invalid configuration for Redis or connection '$connectionName' does not exist.");
+        }
 	}
 
     /**
