@@ -47,6 +47,14 @@ class ModulesContainer
 		}
 	}
 
+	public function stopModules(): void
+    {
+        foreach ($this->modules as $module)
+        {
+            $module->onFinish();
+        }
+    }
+
 	/**
 	 * @return Module[]
 	 */
