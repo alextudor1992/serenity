@@ -23,7 +23,9 @@
 		"ext-libxml": "*",
 		"php": ">=7.4",
 		"composer/installers": "*",
-		"aws/aws-sdk-php": "^3.0@dev"
+		"aws/aws-sdk-php": "^3.0@dev",
+		"webonyx/graphql-php": "dev-master",
+		"react/promise": "dev-master"
 	},
 	"require-dev":
 	{

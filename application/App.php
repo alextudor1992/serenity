@@ -10,6 +10,10 @@ use Serenity\Events\Event;
 use Serenity\Modules\ModulesContainer;
 use Serenity\Routing\Router;
 
+/**
+ * Class App
+ * @package Serenity
+ */
 final class App
 {
 	public const APP_STATE_NOT_INITIALIZED = 0;
