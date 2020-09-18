@@ -1,0 +1,118 @@
+<?php
+
+namespace Serenity;
+
+use RuntimeException;
+use Serenity\Events\CoreEvent;
+use function \register_shutdown_function;
+use Serenity\Events\Event;
+use Serenity\Modules\ModulesContainer;
+use Serenity\Routing\Router;
+
+class App
+{
+	public const APP_STATE_NOT_INITIALIZED = 0;
+	public const APP_STATE_INITIALIZING = 1;
+	public const APP_STATE_INITIALIZED = 2;
+	public const APP_STATE_SHUTTING_DOWN = 3;
+
+    protected static int $appState = self::APP_STATE_NOT_INITIALIZED;
+
+    /**
+     * @param array $modulesList
+     */
+	public static function init(array $modulesList): void
+	{
+		if (static::getAppState() !== self::APP_STATE_NOT_INITIALIZED)
+		{
+			throw new RuntimeException('App is already initialized.');
+		}
+
+		static::setAppState(self::APP_STATE_INITIALIZING);
+		static::modules($modulesList);
+		static::router();
+
+		/**
+		 * We'll dispatch the "request_end" signal
+		 * when the script ends its execution.
+		 */
+		register_shutdown_function(static function()
+		{
+			static::setAppState(self::APP_STATE_SHUTTING_DOWN);
+			static::events()->emit(CoreEvent::REQUEST_END);
+		});
+
+		static::setAppState(self::APP_STATE_INITIALIZED);
+	}
+
+	public static function getAppState() : int
+	{
+		return static::$appState;
+	}
+
+	protected static function setAppState(int $state) : void
+	{
+		static::$appState = $state;
+	}
+
+	public static function name() : string
+	{
+		static $name;
+
+		if (!$name)
+		{
+			$name = static::config()->get('appName');
+		}
+		return $name;
+	}
+
+	/**
+	 * @return Configuration
+	 */
+	public static function config() : Configuration
+	{
+		static $config = null;
+
+		if (!$config)
+		{
+			$config = new Configuration();
+		}
+		return $config;
+	}
+
+	public static function modules(array $modulesList=null) : ModulesContainer
+	{
+		static $modulesContainer = null;
+
+		if (!$modulesContainer)
+		{
+			$modulesContainer = new ModulesContainer($modulesList);
+		}
+		return $modulesContainer;
+	}
+
+	/**
+	 * @return Router
+	 */
+	public static function router() : Router
+	{
+		static $router = null;
+
+		if (!$router)
+		{
+			$router = new Router();
+		}
+		return $router;
+	}
+
+	public static function events() : Event
+	{
+		static $event = null;
+
+		if (!$event)
+		{
+			$event = new Event();
+		}
+		return $event;
+	}
+}

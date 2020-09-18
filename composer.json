@@ -1,0 +1,48 @@
+{
+	"name": "serenity/serenity",
+	"description": "PHP Application",
+	"type": "project",
+	"minimum-stability": "dev",
+	"authors":
+	[
+		{
+			"name": "Alex Tudor",
+			"email": "alex-tudor@windowslive.com"
+		}
+	],
+	"require":
+	{
+		"ext-json": "*",
+		"ext-apcu": "*",
+		"ext-dom": "*",
+		"ext-curl": "*",
+		"ext-PDO": "*",
+		"ext-sockets": "*",
+		"ext-redis": "*",
+		"ext-igbinary": "*",
+		"ext-libxml": "*",
+		"php": ">=7.4",
+		"composer/installers": "*",
+		"aws/aws-sdk-php": ">=3.0"
+	},
+	"require-dev":
+	{
+		"roave/security-advisories": "dev-master"
+	},
+	"config":
+	{
+		"preferred-install": "source",
+		"optimize-autoloader": true,
+		"classmap-authoritative": true,
+		"store-auths": true,
+		"bin-compat": "full"
+	},
+	"autoload":
+	{
+		"psr-4":
+		{
+			"Serenity\\": "Application",
+			"Serenity\\Modules\\": "Modules"
+		}
+	}
+}
