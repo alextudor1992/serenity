@@ -4,8 +4,8 @@ namespace Serenity\Storage;
 
 use Aws\Result;
 use Aws\S3\S3Client;
-use InvalidArgumentException;
 use RuntimeException;
+use Serenity\App;
 
 /**
  * Class ObjectStorage
@@ -21,16 +21,17 @@ class ObjectStorage
 	{
 	    $connectionsList = App::config()->get('object_storage');
 
-	    if (!empty($connectionsList[$connectionName]))
-        {
+	    if (!empty($connectionsList[$connectionName])) {
             $this->connectionName = $connectionName;
             $this->credentials = $connectionsList[$connectionName];
         }
-	    else throw new RuntimeException("Invalid object storage connection '{$connectionName}'");
+	    else {
+            throw new RuntimeException("Invalid object storage connection '{$connectionName}'");
+        }
 	}
 
 	/**
-	 * @return S3Client|null
+	 * @return S3Client
 	 */
 	protected function getAdapter() : S3Client
 	{

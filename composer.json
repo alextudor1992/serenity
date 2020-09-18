@@ -23,11 +23,12 @@
 		"ext-libxml": "*",
 		"php": ">=7.4",
 		"composer/installers": "*",
-		"aws/aws-sdk-php": ">=3.0"
+		"aws/aws-sdk-php": "^3.0@dev"
 	},
 	"require-dev":
 	{
-		"roave/security-advisories": "dev-master"
+		"roave/security-advisories": "dev-master",
+		"phpunit/phpunit": "^9"
 	},
 	"config":
 	{

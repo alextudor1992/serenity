@@ -34,10 +34,7 @@ class Session
 
         if (empty($_COOKIE[$sessionKey]))
         {
-            try {
-                $sessionId = hash('sha256', random_bytes(128));
-            } catch (\Exception $e) {
-            }
+            $sessionId = hash('sha256', random_bytes(128));
             $sessionParams = session_get_cookie_params();
 
             $lifetime = $sessionParams['lifetime'];

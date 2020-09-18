@@ -3,13 +3,14 @@
 namespace Serenity;
 
 use RuntimeException;
+use Serenity\Clients\Session;
 use Serenity\Events\CoreEvent;
 use function \register_shutdown_function;
 use Serenity\Events\Event;
 use Serenity\Modules\ModulesContainer;
 use Serenity\Routing\Router;
 
-class App
+final class App
 {
 	public const APP_STATE_NOT_INITIALIZED = 0;
 	public const APP_STATE_INITIALIZING = 1;
@@ -32,14 +33,11 @@ class App
 		static::modules($modulesList);
 		static::router();
 
-		/**
-		 * We'll dispatch the "request_end" signal
-		 * when the script ends its execution.
-		 */
 		register_shutdown_function(static function()
 		{
 			static::setAppState(self::APP_STATE_SHUTTING_DOWN);
 			static::events()->emit(CoreEvent::REQUEST_END);
+			static::modules()->stopModules();
 		});
 
 		static::setAppState(self::APP_STATE_INITIALIZED);
@@ -115,4 +113,15 @@ class App
 		}
 		return $event;
 	}
+
+	public static function session() : Session
+    {
+        static $session = null;
+
+        if (!$session)
+        {
+            $session = new Session();
+        }
+        return $session;
+    }
 }

@@ -48,4 +48,9 @@ class Module
      *
      */
 	public function onStart() : void {}
+
+    /**
+     *
+     */
+	public function onFinish() : void {}
 }
