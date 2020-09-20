@@ -2,36 +2,31 @@
 
 namespace Serenity\Storage;
 
-use {PDO, PDOException, Serenity\App};
-
+use PDO;
+use PDOException;
 use PDOStatement;
 use RuntimeException;
-use function \
-{
-    count,
-    implode,
-    array_fill,
-};
+use Serenity\App;
+use function {array_fill, count, implode,};
 
 /**
  * Class MySQL
  * @package Serenity\Storage
  */
-class MySQL
-{
-    public const ERROR_ENCOUNTERED = 1;
-    public const CONNECTION_DROPPED = 2;
-    public const CONNECTION_RESTORED = 3;
+class MySQL {
+	protected const ERROR_ENCOUNTERED = 1;
+	protected const CONNECTION_DROPPED = 2;
+	protected const CONNECTION_RESTORED = 3;
 
-    protected ?PDO $dbh;
-    protected int $error;
-    protected array $credentials;
-    protected string $connectionName;
+	protected ?PDO $dbh;
+	protected int $error;
+	protected array $credentials;
+	protected string $connectionName;
 
-    /** @var PDOStatement[] */
-    protected array $statements = [];
+	/** @var PDOStatement[] */
+	protected array $statements = [];
 
-    /**
+	/**
      * MySQL constructor.
      * @param string $connectionName
      */
@@ -40,14 +35,12 @@ class MySQL
         $connectionsList = App::config()->get('mysql');
         $credentials = $connectionsList[$connectionName] ?? null;
 
-        if ($credentials && $this->validateCredentials($credentials))
-        {
-            $this->connectionName = $connectionName;
-            $this->credentials = $connectionsList[$connectionName];
-        }
-        else {
-            throw new RuntimeException("Invalid MySQL configuration for connection {$connectionName}");
-        }
+	    if ($credentials && $this->validateCredentials($credentials)) {
+		    $this->connectionName = $connectionName;
+		    $this->credentials = $connectionsList[$connectionName];
+	    } else {
+		    throw new RuntimeException("Invalid MySQL configuration for connection {$connectionName}");
+	    }
     }
 
     /**
@@ -161,29 +154,26 @@ class MySQL
     {
         $statement = $this->createStatement($query);
 
-        if (!$statement) {
-            return null;
-        }
-        if ($statement->execute($params)) {
-            return $statement;
-        }
-        if ($this->processError($statement->errorCode()) === self::CONNECTION_RESTORED) {
-            return $this->query($query, $params);
-        }
-        return null;
+	    if ($statement->execute($params)) {
+		    return $statement;
+	    }
+	    if ($this->processError($statement->errorCode()) === self::CONNECTION_RESTORED) {
+		    return $this->query($query, $params);
+	    }
+	    return null;
     }
 
-    protected function createStatement(string $query)
-    {
-        if (!isset($$this->statements[$query]))
-        {
-            $statement = $this->getConnection()->prepare($query);
+	/**
+	 * @param string $query
+	 * @return PDOStatement
+	 */
+	protected function createStatement(string $query): PDOStatement {
+		if (!isset($$this->statements[$query])) {
+			$statement = $this->getConnection()->prepare($query);
 
-            if ($statement)
-            {
-                $this->statements[$query] = $statement;
-            }
-            else {
+			if ($statement) {
+				$this->statements[$query] = $statement;
+			} else {
                 throw new RuntimeException("Could not create prepared statement for query: $query");
             }
         }

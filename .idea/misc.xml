@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpEntryPointsManager">
+    <entry_point>
+      <entry_point TYPE="phpMethod" FQNAME="\Serenity\Clients\Session destroy" />
+      <entry_point TYPE="phpClass" FQNAME="\Serenity\Clients\Session" />
+      <entry_point TYPE="phpMethod" FQNAME="\Serenity\Clients\Session __construct" />
+    </entry_point>
+    <pattern value="\Serenity\Clients\Session" member="destroy" />
+    <pattern value="\Serenity\Clients\Session" />
+    <pattern value="\Serenity\Clients\Session" member="__construct" />
+  </component>
+  <component name="ProjectResources">
+    <xml-schema-version>XMLSchema_1_1</xml-schema-version>
+  </component>
+</project>

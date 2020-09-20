@@ -1,0 +1,7 @@
+{
+  "name": "Serenity GraphQL Schema",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {}
+  }
+}

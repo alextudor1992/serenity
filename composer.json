@@ -24,7 +24,7 @@
 		"php": ">=7.4",
 		"composer/installers": "*",
 		"aws/aws-sdk-php": "^3.0@dev",
-		"webonyx/graphql-php": "dev-master",
+		"webonyx/graphql-php": "0.13.x-dev",
 		"react/promise": "dev-master"
 	},
 	"require-dev":

@@ -4,14 +4,7 @@ namespace Serenity\Routing;
 
 use JsonException;
 use Serenity\Modules\Module;
-use function \
-{
-	count,
-	strpos,
-	explode,
-	headers_sent,
-	http_response_code,
-};
+use function {count, explode, headers_sent, http_response_code, strpos,};
 
 
 /**
@@ -52,27 +45,19 @@ class Router
      * @param Resolver $resolver
      * @return $this
      */
-	public function addResolver(Module $module, Resolver $resolver)
-	{
-		$service = $this->request->getService();
-        $pattern = $resolver->getFullPath();
-        $moduleId = $module->getModuleId();
-        $method = $resolver->getMethod();
+	public function addResolver(Module $module, Resolver $resolver) {
+		$pattern = $resolver->getFullPath();
+		$method = $resolver->getMethod();
+		$listener = ['module' => $module, 'resolver' => $resolver];
 
-		if (!$service || $service === $moduleId)
-		{
-		    $listener = ['module' => $module, 'resolver' => $resolver];
-
-			/**
-			 * Token "$"	- The identifier for a dynamic parameter
-			 * Token "..."	- The identifier for the variadic parameter
-			 */
-			if (strpos($pattern, '$') !== false || strpos($pattern, '...') !== false) {
-				$this->dynamicResolvers[$method][$pattern] = $listener;
-			}
-			else {
-                $this->staticResolvers[$method][$pattern] = $listener;
-            }
+		/**
+		 * Token "$"    - The identifier for a dynamic parameter
+		 * Token "..."    - The identifier for the variadic parameter
+		 */
+		if (strpos($pattern, '$') !== false || strpos($pattern, '...') !== false) {
+			$this->dynamicResolvers[$method][$pattern] = $listener;
+		} else {
+			$this->staticResolvers[$method][$pattern] = $listener;
 		}
 		return $this;
 	}
@@ -116,17 +101,17 @@ class Router
         if (isset($staticResolvers[$requestMethod][$initialPath]))
         {
             $request->setPath([]);
-            $moduleResolver = $staticResolvers[$requestMethod][$initialPath];
+	        $moduleResolver = $staticResolvers[$requestMethod][$initialPath];
+	        $requestedService = $request->getService();
 
             /** @var Module $module */
             $module = $moduleResolver['module'];
 
-            if ($module->isActive())
-            {
-                /** @var Resolver $resolver */
-                $resolver = $moduleResolver['resolver'];
-                $this->tryResolver($request, $resolver);
-            }
+	        if ((!$requestedService || $requestedService === $module->getModuleId()) && $module->isActive()) {
+		        /** @var Resolver $resolver */
+		        $resolver = $moduleResolver['resolver'];
+		        $this->tryResolver($request, $resolver);
+	        }
         }
     }
 
@@ -186,14 +171,14 @@ class Router
                 $request->setPath($mapping);
 
                 /** @var Module $module */
-                $module = $pluginResolver['module'];
+	            $module = $pluginResolver['module'];
+	            $requestedService = $request->getService();
 
-                if ($module->isActive())
-                {
-                    /** @var Resolver $resolver */
-                    $resolver = $pluginResolver['resolver'];
-                    $this->tryResolver($request, $resolver);
-                }
+	            if ((!$requestedService || $requestedService === $module->getModuleId()) && $module->isActive()) {
+		            /** @var Resolver $resolver */
+		            $resolver = $pluginResolver['resolver'];
+		            $this->tryResolver($request, $resolver);
+	            }
             }
         }
     }
