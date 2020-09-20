@@ -44,7 +44,7 @@
 	{
 		"psr-4":
 		{
-			"Serenity\\": "Application",
+			"Serenity\\Application": "Application",
 			"Serenity\\Modules\\": "Modules"
 		}
 	}
