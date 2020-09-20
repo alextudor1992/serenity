@@ -1,6 +1,6 @@
 <?php
 
-namespace Serenity\GraphQL;
+namespace Serenity\Application\GraphQL;
 
 
 use GraphQL\Type\Definition\ObjectType;

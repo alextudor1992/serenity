@@ -1,11 +1,10 @@
 <?php
 
-namespace Serenity\Routing;
+namespace Serenity\Application\Routing;
 
-use Serenity\Routing\Network\HTTPHeaderInterface;
+use Serenity\Application\Routing\Network\HTTPHeaderInterface;
 
-class Redirect implements HTTPHeaderInterface
-{
+class Redirect implements HTTPHeaderInterface {
 	/** This will instruct Nginx / OpenResty to make an internal redirect. */
 	public const INTERNAL = 0;
 

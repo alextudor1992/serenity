@@ -1,16 +1,15 @@
 <?php
 
-namespace Serenity\Events;
+namespace Serenity\Application\Events;
 
-use Serenity\App;
+use Serenity\Application\App;
 
-abstract class Listener
-{
+abstract class Listener {
 	/**
 	 * @param mixed $data
 	 * @return void
 	 */
-	abstract public function onEmit($data) : void;
+	abstract public function onEmit($data): void;
 
 	/**
 	 * @param string $eventName

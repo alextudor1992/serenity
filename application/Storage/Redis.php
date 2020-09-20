@@ -1,11 +1,10 @@
 <?php
 
-namespace Serenity\Storage;
+namespace Serenity\Application\Storage;
 
 use Redis as RedisAdapter;
-
 use RuntimeException;
-use Serenity\App;
+use Serenity\Application\App;
 
 /**
  * Class Redis

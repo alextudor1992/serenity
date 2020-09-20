@@ -1,16 +1,15 @@
 <?php
 
-namespace Serenity\Routing;
+namespace Serenity\Application\Routing;
 
 /**
  * Class Resolver
  * @package Serenity\Routing
  */
-abstract class Resolver
-{
-    /**
-     * @param Request $request
-     * @return Response|Redirect
+abstract class Resolver {
+	/**
+	 * @param Request $request
+	 * @return Response|Redirect
      */
     abstract public function resolve(Request $request);
 

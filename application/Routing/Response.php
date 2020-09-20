@@ -1,24 +1,19 @@
 <?php
 
-namespace Serenity\Routing;
+namespace Serenity\Application\Routing;
 
-use Serenity\App;
-use Serenity\Routing\Network\HTTPHeaderInterface;
-use function \
-{
-	header,
-	headers_sent
-};
+use Serenity\Application\App;
+use Serenity\Application\Routing\Network\HTTPHeaderInterface;
+use function {header, headers_sent};
 
 /**
  * Class Response
  * @package Serenity\Routing
  */
-class Response implements HTTPHeaderInterface
-{
-    public const CODE_SUCCESS = 200;
-    public const CODE_SUCCESS_EMPTY = 204;
-    public const CODE_NOT_FOUND = 404;
+class Response implements HTTPHeaderInterface {
+	public const CODE_SUCCESS = 200;
+	public const CODE_SUCCESS_EMPTY = 204;
+	public const CODE_NOT_FOUND = 404;
 
 	public const TYPE_JSON = 'json';
 

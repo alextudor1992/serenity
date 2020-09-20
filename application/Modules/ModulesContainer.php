@@ -1,13 +1,12 @@
 <?php
 
-namespace Serenity\Modules;
+namespace Serenity\Application\Modules;
 
 use Generator;
 use RuntimeException;
-use Serenity\App;
+use Serenity\Application\App;
 
-class ModulesContainer
-{
+class ModulesContainer {
 	/** @var Module[] */
 	protected array $modules = [];
 

@@ -1,22 +1,18 @@
 <?php
 
-namespace Serenity\Routing\Network;
+namespace Serenity\Application\Routing\Network;
 
-use function
-{
-	gmdate,
-	strtotime,
-};
+use function gmdate;
+use function strtotime;
 
 
 /**
  * Class Cache
  * @package Serenity\Routing\Network
  */
-class Cache implements HTTPHeaderInterface
-{
-	public const PUBLIC			= 'public';
-	public const PRIVATE		= 'private';
+class Cache implements HTTPHeaderInterface {
+	public const PUBLIC = 'public';
+	public const PRIVATE = 'private';
 	public const IMMUTABLE		= 'immutable';
 	public const NO_TRANSFORM	= 'no-transform';
 	public const ONLY_IF_CACHED	= 'only-if-cached';

@@ -1,14 +1,13 @@
 <?php
 
-namespace Serenity;
+namespace Serenity\Application;
 
 /**
  * Class Configuration
  * @package Serenity
  */
-class Configuration
-{
-    protected array $data = [];
+class Configuration {
+	protected array $data = [];
 
 	/**
 	 * @param string $key

@@ -1,14 +1,13 @@
 <?php
 
-namespace Serenity\ServiceDiscovery;
+namespace Serenity\Application\ServiceDiscovery;
 
-interface ServiceProvider
-{
-    /**
-     * @param string $serviceId
-     * @return string
-     */
-	public function getServiceName(string $serviceId) : string;
+interface ServiceProvider {
+	/**
+	 * @param string $serviceId
+	 * @return string
+	 */
+	public function getServiceName(string $serviceId): string;
 
 	/**
 	 * @param string $serviceId

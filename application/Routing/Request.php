@@ -1,10 +1,10 @@
 <?php
 
-namespace Serenity\Routing;
+namespace Serenity\Application\Routing;
 
 use JsonException;
-use Serenity\App;
-use Serenity\Modules\Module;
+use Serenity\Application\App;
+use Serenity\Application\Modules\Module;
 
 
 /**

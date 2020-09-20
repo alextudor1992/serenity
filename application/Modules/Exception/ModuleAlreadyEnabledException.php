@@ -1,6 +1,6 @@
 <?php
 
-namespace Serenity\Modules\Exception;
+namespace Serenity\Application\Modules\Exception;
 
 use RuntimeException;
 
@@ -8,7 +8,6 @@ use RuntimeException;
  * Class ModuleAlreadyEnabledException
  * @package Serenity\Modules\Exception
  */
-class ModuleAlreadyEnabledException extends RuntimeException
-{
+class ModuleAlreadyEnabledException extends RuntimeException {
 
 }

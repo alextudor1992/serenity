@@ -1,11 +1,11 @@
 <?php
 
-namespace Serenity\Storage;
+namespace Serenity\Application\Storage;
 
 use Aws\Result;
 use Aws\S3\S3Client;
 use RuntimeException;
-use Serenity\App;
+use Serenity\Application\App;
 
 /**
  * Class ObjectStorage

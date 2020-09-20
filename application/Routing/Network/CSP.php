@@ -1,16 +1,15 @@
 <?php
 
-namespace Serenity\Routing\Network;
+namespace Serenity\Application\Routing\Network;
 
-class CSP implements HTTPHeaderInterface
-{
-	public const BASE_URI			= 'base-uri';
-	public const CONNECTIONS		= 'connect-src';
-	public const CHILD_IFRAME		= 'child-src';
-	public const SCRIPTS			= 'script-src';
-	public const STYLE				= 'style-src';
-	public const IMAGES				= 'img-src';
-	public const FORMS_ACTION		= 'form-action';
+class CSP implements HTTPHeaderInterface {
+	public const BASE_URI = 'base-uri';
+	public const CONNECTIONS = 'connect-src';
+	public const CHILD_IFRAME = 'child-src';
+	public const SCRIPTS = 'script-src';
+	public const STYLE = 'style-src';
+	public const IMAGES = 'img-src';
+	public const FORMS_ACTION = 'form-action';
 	public const ANCESTOR_IFRAME	= 'frame-ancestors';
 	public const FONTS				= 'font-src';
 	public const OBJECTS			= 'object-src';

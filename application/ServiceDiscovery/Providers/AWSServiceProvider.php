@@ -1,10 +1,10 @@
 <?php
 
-namespace Serenity\ServiceDiscovery\Providers;
+namespace Serenity\Application\ServiceDiscovery\Providers;
 
 use Aws\Result;
 use Aws\ServiceDiscovery\ServiceDiscoveryClient;
-use Serenity\ServiceDiscovery\ServiceProvider;
+use Serenity\Application\ServiceDiscovery\ServiceProvider;
 
 /**
  * Class AWSServiceProvider

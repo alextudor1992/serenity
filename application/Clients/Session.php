@@ -1,20 +1,19 @@
 <?php
 
-namespace Serenity\Clients;
+namespace Serenity\Application\Clients;
 
 use Exception;
-use Serenity\App;
-use Serenity\Storage\Redis;
+use Serenity\Application\App;
+use Serenity\Application\Storage\Redis;
 
 /**
  * Class Session
  * @package Serenity\Clients
  */
-class Session
-{
-    protected bool $readOnly;
-    protected string $sessionId;
-    protected Redis $storageAdapter;
+class Session {
+	protected bool $readOnly;
+	protected string $sessionId;
+	protected Redis $storageAdapter;
 
     /**
      * Session constructor.

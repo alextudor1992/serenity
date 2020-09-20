@@ -1,16 +1,15 @@
 <?php
 
-namespace Serenity\Modules;
+namespace Serenity\Application\Modules;
 
-use Serenity\ServiceDiscovery\ServiceProvider;
+use Serenity\Application\ServiceDiscovery\ServiceProvider;
 
 /**
  * Class Service
  * @package Serenity\Modules
  */
-class Service extends Module
-{
-    protected ServiceProvider $serviceProvider;
+class Service extends Module {
+	protected ServiceProvider $serviceProvider;
 
     /**
      * Service constructor.

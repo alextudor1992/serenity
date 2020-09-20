@@ -1,13 +1,12 @@
 <?php
 
-namespace Serenity\Modules;
+namespace Serenity\Application\Modules;
 
 /**
  * Class Module
  * @package Serenity\Modules
  */
-class Module
-{
+class Module {
 	protected string $id;
 	protected bool $active = false;
 

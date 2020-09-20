@@ -1,16 +1,15 @@
 <?php
 
-namespace Serenity\Events;
+namespace Serenity\Application\Events;
 
 
 /**
  * Class EventSystem
  * @package Serenity
  */
-class Event
-{
+class Event {
 	/** @var array */
-    protected array $events = [];
+	protected array $events = [];
 
 	/**
 	 * @param string $event

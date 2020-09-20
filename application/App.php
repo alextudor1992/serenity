@@ -1,21 +1,20 @@
 <?php
 
-namespace Serenity;
+namespace Serenity\Application;
 
 use RuntimeException;
-use Serenity\Clients\Session;
-use Serenity\Events\CoreEvent;
-use function \register_shutdown_function;
-use Serenity\Events\Event;
-use Serenity\Modules\ModulesContainer;
-use Serenity\Routing\Router;
+use Serenity\Application\Clients\Session;
+use Serenity\Application\Events\CoreEvent;
+use Serenity\Application\Events\Event;
+use Serenity\Application\Modules\ModulesContainer;
+use Serenity\Application\Routing\Router;
+use function register_shutdown_function;
 
 /**
  * Class App
  * @package Serenity
  */
-final class App
-{
+final class App {
 	public const APP_STATE_NOT_INITIALIZED = 0;
 	public const APP_STATE_INITIALIZING = 1;
 	public const APP_STATE_INITIALIZED = 2;

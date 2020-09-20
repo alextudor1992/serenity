@@ -1,20 +1,23 @@
 <?php
 
-namespace Serenity\Routing;
+namespace Serenity\Application\Routing;
 
 use JsonException;
-use Serenity\Modules\Module;
-use function {count, explode, headers_sent, http_response_code, strpos,};
+use Serenity\Application\Modules\Module;
+use function count;
+use function explode;
+use function headers_sent;
+use function http_response_code;
+use function strpos;
 
 
 /**
  * Class Router
  * @package Serenity\Routing
  */
-class Router
-{
+class Router {
 	/** @var Request */
-    protected Request $request;
+	protected Request $request;
 
     protected array $staticResolvers = [];
 

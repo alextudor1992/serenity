@@ -1,0 +1,16 @@
+schema {
+    query: App
+}
+
+type App {
+    id: ID!
+    name: String!
+    modules: [Module]!
+    isHealthy(serviceId: ID!): Boolean!
+}
+
+type Module
+{
+    id: ID!
+    name: String!
+}

@@ -1,13 +1,15 @@
 <?php
 
-namespace Serenity\Storage;
+namespace Serenity\Application\Storage;
 
 use PDO;
 use PDOException;
 use PDOStatement;
 use RuntimeException;
-use Serenity\App;
-use function {array_fill, count, implode,};
+use Serenity\Application\App;
+use function array_fill;
+use function count;
+use function implode;
 
 /**
  * Class MySQL

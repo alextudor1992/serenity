@@ -1,6 +1,6 @@
 <?php
 
-namespace Serenity\Routing;
+namespace Serenity\Application\Routing;
 
 use JsonException;
 
@@ -8,9 +8,8 @@ use JsonException;
  * Class JSONResponse
  * @package Serenity\Routing
  */
-class JSONResponse extends Response
-{
-    /**
+class JSONResponse extends Response {
+	/**
      * JSONResponse constructor.
      * @param int $code
      * @param mixed $data
