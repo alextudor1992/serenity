@@ -116,6 +116,7 @@
   <component name="PhpUnit">
     <phpunit_settings>
       <phpunit_by_interpreter interpreter_id="31bd9eea-17ab-4ffe-acff-34bbd078fd97" custom_loader_path="D:/Web/serenity/vendor/autoload.php" />
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" />
     </phpunit_settings>
   </component>
 </project>
